@@ -1,0 +1,11 @@
+{
+  "_id": "http://localhost:8000/data/people/john",
+  "_type": "Person",
+  "name": "John",
+  "lastName": "Doe",
+  "occupation": "plumber",
+  "image": "http://loremflickr.com/g/320/240/man,face",
+  "spouse": {
+    "_id": "http://localhost:8000/data/people/jane"
+  }
+}

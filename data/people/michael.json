@@ -1,0 +1,8 @@
+{
+  "_id": "http://localhost:8000/data/people/michael",
+  "_type": "Person",
+  "name": "Michał",
+  "lastName": "Kowalski",
+  "occupation": "teacher",
+  "image": "http://loremflickr.com/g/320/240/man,face"
+}

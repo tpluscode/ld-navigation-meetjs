@@ -1,0 +1,26 @@
+{
+  "_type": "Collection",
+  "memberType": "Person",
+  "members": [
+    {
+      "_id": "http://localhost:8000/data/people/john",
+      "name": "John",
+      "lastName": "Doe"
+    },
+    {
+      "_id": "http://localhost:8000/data/people/jane",
+      "name": "Jane",
+      "lastName": "Doe"
+    },
+    {
+      "_id": "http://localhost:8000/data/people/michael",
+      "name": "Michał",
+      "lastName": "Kowalski"
+    },
+    {
+      "_id": "http://localhost:8000/data/people/dick",
+      "name": "Richard",
+      "lastName": "Schmidt"
+    }
+  ]
+}

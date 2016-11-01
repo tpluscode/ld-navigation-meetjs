@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "start": "ws"
+  },
+  "local-web-server": {
+    "spa": "index.html",
+    "rewrite": [
+      { "from": "/data/*", "to": "/data/$1.json" },
+      { "from": "/data/", "to": "/data/home.json" },
+      { "from": "/", "to": "/home" }
+    ]
+  },
+  "devDependencies": {
+    "local-web-server": "^1.2.6"
+  }
+}

@@ -1,0 +1,98 @@
+<! DOCTYPE html >
+<html>
+<head>
+    <title>Demo of SPA without routing</title>
+    <link rel="import" href="/bower_components/ld-navigation/ld-navigation.html"/>
+    <link rel="import" href="/bower_components/iron-pages/iron-pages.html"/>
+    <link rel="import" href="/bower_components/iron-ajax/iron-ajax.html"/>
+    <link rel="import" href="/bower_components/paper-datatable/paper-datatable.html"/>
+    <link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html"/>
+    <link rel="import" href="/bower_components/paper-button/paper-button.html"/>
+    <link rel="import" href="/bower_components/iron-image/iron-image.html"/>
+
+    <style>
+        #Index {
+            text-align: center;
+            font-family: 'Roboto', 'Noto', sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+<template is="dom-bind">
+    <ld-navigator resource-url="{{apiUrl}}"></ld-navigator>
+    <ld-navigation-context base="http://localhost:8000/data"></ld-navigation-context>
+    <ld-navigation-history></ld-navigation-history>
+
+    <iron-ajax auto url="[[apiUrl]]" last-response="{{data}}" handle-as="json"></iron-ajax>
+
+    <iron-pages attr-for-selected="id" selected="[[data._type]]" fallback-selection="Index">
+
+        <div id="Index">
+            <h1>
+                Konsumujesz HTTP API w przeglądarce?
+            </h1>
+            <h2>
+                Nie wiem czy wiesz, ale prawdopodobnie nie potrzebujesz routingu
+            </h2>
+        </div>
+
+        <div id="Entrypoint">
+            <a is="ld-link" resource-url="[[data.people._id]]">Show people</a>
+        </div>
+
+        <div id="Collection">
+
+            <paper-datatable data="[[getMembers(data.members)]]">
+                <paper-datatable-column header="Name" property="name" sortable>
+                </paper-datatable-column>
+                <paper-datatable-column header="Name" property="lastName" sortable>
+                </paper-datatable-column>
+                <paper-datatable-column header="Actions" property="_id" sortable editable>
+                    <template>
+                        <a is="ld-link" resource-url="[[value]]">
+                            <paper-icon-button icon="icons:more-horiz"></paper-icon-button>
+                        </a>
+                    </template>
+                </paper-datatable-column>
+            </paper-datatable>
+
+            <a is="ld-link" resource-url="http://localhost:8000/data/home">Go home</a>
+        </div>
+
+        <div id="Person">
+            <paper-card heading="[[data.name]] [[data.lastName]]">
+                <div class="card-content">
+                    <iron-image src="[[data.image]]" alt="depiction of [[data.name]] [[data.lastName]"></iron-image>
+
+                    <div>
+                        This is [[data.name]] [[data.lastName]].
+                    </div>
+                    <div hidden$="[[!data.occupation]]">
+                        [[data.name]] is a [[data.occupation]].
+                    </div>
+                    <div hidden$="[[!data.spouse]]">
+                        [[data.name]] is married to
+                        <a is="ld-link" resource-url="[[data.spouse._id]]">[[data.spouse._id]]</a>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <paper-button on-tap="toList">List</paper-button>
+                </div>
+            </paper-card>
+        </div>
+
+    </iron-pages>
+</template>
+
+<script>
+    document.querySelector('template').toList = function (e) {
+        LdNavigation.Helpers.fireNavigation(e.target, 'http://localhost:8000/data/people');
+    };
+
+    document.querySelector('template').getMembers = function (members) {
+        return members || [];
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "_id": "http://localhost:8000/data/people/jane",
+  "_type": "Person",
+  "name": "Jane",
+  "lastName": "Doe",
+  "occupation": "singer-songwriter",
+  "image": "http://loremflickr.com/g/320/240/woman,face",
+  "spouse": {
+    "_id": "http://localhost:8000/data/people/john",
+    "_type": ""
+  }
+}
