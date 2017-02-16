@@ -9,6 +9,9 @@
     <link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html"/>
     <link rel="import" href="/bower_components/paper-button/paper-button.html"/>
     <link rel="import" href="/bower_components/iron-image/iron-image.html"/>
+    <link rel="import" href="/bower_components/zero-md/zero-md.html"/>
+    <link rel="stylesheet" href="/bower_components/zero-md/markdown-themes/default.css"/>
+    <link rel="stylesheet" href="/bower_components/zero-md/highlight-themes/tomorrow.css"/>
 
     <style>
         #Index {
@@ -28,18 +31,22 @@
 
         <div id="Index">
             <h1>
-                Are you consuming a <strike>REST</strike> HTTP API in the browser?
+                Are you consuming a
+                <del>REST</del>
+                HTTP API in the browser?
             </h1>
             <h2>
                 You may not realize that you don't need routing
             </h2>
 
-            <ld-link resource-url="http://localhost:8000/data/home">
+            <ld-link resource-url="http://localhost:8000/data/me">
                 <a>Start here</a>
             </ld-link>
         </div>
 
         <div id="Entrypoint">
+            There is also some "real data" here:<br><br>
+
             <ld-link resource-url="[[data.people._id]]">
                 <a>Show people</a>
             </ld-link>
@@ -83,7 +90,20 @@
                     </div>
                 </div>
                 <div class="card-actions">
-                    <paper-button on-tap="toList">List</paper-button>
+                    <paper-button on-tap="goTo" data-to="http://localhost:8000/data/people">List</paper-button>
+                </div>
+            </paper-card>
+        </div>
+
+        <div id="Slide">
+            <paper-card heading="[[data.heading]]">
+                <div class="card-content">
+                    <zero-md file="[[data.markdown]]">
+                        <div class="md-html"></div>
+                    </zero-md>
+                </div>
+                <div class="card-actions">
+                    <paper-button on-tap="goTo" data-to$="[[data.next._id]]">Next</paper-button>
                 </div>
             </paper-card>
         </div>
@@ -92,8 +112,8 @@
 </template>
 
 <script>
-    document.querySelector('template').toList = function (e) {
-        LdNavigation.Helpers.fireNavigation(e.target, 'http://localhost:8000/data/people');
+    document.querySelector('template').goTo = function (e) {
+        LdNavigation.Helpers.fireNavigation(e.target, e.target.getAttribute('data-to'));
     };
 
     document.querySelector('template').getMembers = function (members) {

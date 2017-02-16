@@ -25,7 +25,8 @@
     "iron-icons": "PolymerElements/iron-icons#~1.1.3",
     "paper-card": "PolymerElements/paper-card#~1.1.4",
     "paper-button": "PolymerElements/paper-button#~1.0.14",
-    "iron-image": "PolymerElements/iron-image#~1.2.5"
+    "iron-image": "PolymerElements/iron-image#~1.2.5",
+    "zero-md": "^0.2.0"
   },
   "resolutions": {
     "polymer": "^1.1.0",

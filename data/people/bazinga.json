@@ -1,0 +1,8 @@
+{
+  "_id": "http://localhost:8000/data/people/bazinga",
+  "_type": "Slide",
+  "markdown": "http://localhost:8000/slides/not-a-person.md",
+  "next": {
+    "_id": "http://localhost:8000/data/people"
+  }
+}

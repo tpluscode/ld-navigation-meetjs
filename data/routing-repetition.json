@@ -1,0 +1,7 @@
+{
+  "_type": "Slide",
+  "markdown": "http://localhost:8000/slides/repetitive.md",
+  "next": {
+    "_id": "http://localhost:8000/data/views"
+  }
+}

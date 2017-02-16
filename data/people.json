@@ -21,6 +21,11 @@
       "_id": "http://localhost:8000/data/people/dick",
       "name": "Richard",
       "lastName": "Schmidt"
+    },
+    {
+      "_id": "http://localhost:8000/data/people/bazinga",
+      "name": "Who",
+      "lastName": "am I?"
     }
   ]
 }
