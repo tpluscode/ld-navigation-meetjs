@@ -20,9 +20,7 @@
 <body>
 
 <template is="dom-bind">
-    <ld-navigator resource-url="{{apiUrl}}"></ld-navigator>
-    <ld-navigation-context base="http://localhost:8000/data"></ld-navigation-context>
-    <ld-navigation-history></ld-navigation-history>
+    <ld-navigator resource-url="{{apiUrl}}" base="http://localhost:8000/data"></ld-navigator>
 
     <iron-ajax auto url="[[apiUrl]]" last-response="{{data}}" handle-as="json"></iron-ajax>
 
@@ -36,11 +34,15 @@
                 You may not realize that you don't need routing
             </h2>
 
-            <a is="ld-link" resource-url="http://localhost:8000/data/home">Start here</a>
+            <ld-link resource-url="http://localhost:8000/data/home">
+                <a>Start here</a>
+            </ld-link>
         </div>
 
         <div id="Entrypoint">
-            <a is="ld-link" resource-url="[[data.people._id]]">Show people</a>
+            <ld-link resource-url="[[data.people._id]]">
+                <a>Show people</a>
+            </ld-link>
         </div>
 
         <div id="Collection">
@@ -52,14 +54,14 @@
                 </paper-datatable-column>
                 <paper-datatable-column header="Actions" property="_id" sortable editable>
                     <template>
-                        <a is="ld-link" resource-url="[[value]]">
+                        <ld-link resource-url="[[value]]">
                             <paper-icon-button icon="icons:more-horiz"></paper-icon-button>
-                        </a>
+                        </ld-link>
                     </template>
                 </paper-datatable-column>
             </paper-datatable>
 
-            <a is="ld-link" resource-url="http://localhost:8000/data/home">Go home</a>
+            <ld-link resource-url="http://localhost:8000/data/home">Go home</ld-link>
         </div>
 
         <div id="Person">
@@ -75,7 +77,9 @@
                     </div>
                     <div hidden$="[[!data.spouse]]">
                         [[data.name]] is married to
-                        <a is="ld-link" resource-url="[[data.spouse._id]]">[[data.spouse._id]]</a>
+                        <ld-link resource-url="[[data.spouse._id]]">
+                            <a>[[data.spouse._id]]</a>
+                        </ld-link>
                     </div>
                 </div>
                 <div class="card-actions">
