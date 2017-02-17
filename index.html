@@ -16,6 +16,11 @@
     <style>
         #Index {
             text-align: center;
+        }
+
+        iron-pages > div {
+            width: 700px;
+            margin: 0 auto;
             font-family: 'Roboto', 'Noto', sans-serif;
         }
     </style>
@@ -72,6 +77,7 @@
         </div>
 
         <div id="Person">
+            <paper-material elevation="2">
             <paper-card heading="[[data.name]] [[data.lastName]]">
                 <div class="card-content">
                     <iron-image src="[[data.image]]" alt="depiction of [[data.name]] [[data.lastName]"></iron-image>
@@ -93,10 +99,12 @@
                     <paper-button on-tap="goTo" data-to="http://localhost:8000/data/people">List</paper-button>
                 </div>
             </paper-card>
+            </paper-material>
         </div>
 
         <div id="Slide">
-            <paper-card heading="[[data.heading]]">
+            <paper-material elevation="2">
+            <paper-card>
                 <div class="card-content">
                     <zero-md file="[[data.markdown]]">
                         <div class="md-html"></div>
@@ -106,6 +114,7 @@
                     <paper-button on-tap="goTo" data-to$="[[data.next._id]]">Next</paper-button>
                 </div>
             </paper-card>
+            </paper-material>
         </div>
 
     </iron-pages>

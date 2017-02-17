@@ -11,7 +11,10 @@ Let your code handle choose the view depending on the actual data.
 
 <iron-pages attr-for-selected="id" selected="[[data._type]]" fallback-selection="Index">
     <div id="Index"></div>
-    <div id="Slide"></div>
+    <div id="Slide">
+        <ld-link resource-url="{{data.linkedResource}}">
+        </ld-link>
+    </div>
     <!-- etc. -->
 </iron-pages>
 ```
